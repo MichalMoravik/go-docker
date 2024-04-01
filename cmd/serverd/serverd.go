@@ -12,7 +12,8 @@ func hiHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/yo", hiHandler)
+	router := http.NewServeMux()
+	router.HandleFunc("GET /yo", hiHandler)
 
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 }
