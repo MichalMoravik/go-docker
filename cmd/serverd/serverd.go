@@ -1,20 +1,18 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"net/http"
 	"os"
-
-	"github.com/gofiber/fiber/v2"
 )
 
-func hiHandler(c *fiber.Ctx) error {
-	return c.SendString("Yo, World!")
+func hiHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "Yo, World!")
 }
 
 func main() {
-	app := fiber.New()
+	http.HandleFunc("/yo", hiHandler)
 
-	app.Get("/yo", hiHandler)
-
-	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
