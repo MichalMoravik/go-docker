@@ -9,8 +9,10 @@ A template for a simple Go-Docker service with hot reloading.
 3. Change the name to your project's name in the `go.mod` file.
 4. Run `docker-compose up`.
 
-> If the port 8081 is already occupied on your machine, go to
-the `docker-compose.yml` file and choose a different port.
+  > If the port 8081 is already occupied on your machine, go to
+  the `docker-compose.yml` file and choose a different port.
+
+5. Send requests to `http://127.0.0.1:8081/yo`.
 
 ## Deployment
 
